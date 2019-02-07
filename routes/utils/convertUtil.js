@@ -2,7 +2,6 @@ const util = require('util');
 const serviceKeys = require('./config/key.json').service_keys;
 const serviceApis = require('./config/api.json').api_uri;
 
-
 function convertGooglePlaceOption(keyword,lat,lng,radius){
 	var googlePlaceOption = {
 		uri: serviceApis.google_nearbysearch,
@@ -48,7 +47,7 @@ function convertGoogleDetailOption(address,lat,lng){
 	return googlePlaceOption;
 }
 
-function convertKakaoPlaceOption(lng,lat,radius){
+function convertKakaoPlaceOption(lng,lat,radius,category){
 	var kakaoPlaceOptions = {
 		headers: {
 			'Authorization':  'KakaoAK '+ serviceKeys.kakao_place
@@ -59,7 +58,7 @@ function convertKakaoPlaceOption(lng,lat,radius){
 			x:lat,
 			y:lng,
 			radius:radius,
-			category_group_code:'MT1,CS2,PS3,SC4,AC5'
+			category_group_code : category
 		}
 	}
 	return kakaoPlaceOptions;
@@ -108,6 +107,7 @@ function pad(n, width) {
 	n = n + '';
 	return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 }
+
 
 exports.convertHouseRentPriceOption = convertHouseRentPriceOption;
 exports.convertKakaoLocationOption = convertKakaoLocationOption;

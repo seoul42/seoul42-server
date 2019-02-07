@@ -10,7 +10,7 @@ router.get('/search/infos', function(req,res){
 	const radius = req.query.radius;
 	const category = req.query.category;
 	
-	const kakaoPlaceOption = convertUtil.convertKakaoPlaceOption(lat,lng,radius);
+	const kakaoPlaceOption = convertUtil.convertKakaoPlaceOption(lat,lng,radius,category);
 	connectApi(kakaoPlaceOption).then(function(kakaoPlaceResult){
 		var resultParam = {
 			place_result : kakaoPlaceResult.result.documents,
