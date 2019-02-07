@@ -6,14 +6,16 @@ const serviceKeys = require('./utils/config/key.json').service_keys;
 const convertUtil = require('./utils/convertUtil.js');
 
 router.get('/search/infos', function(req,res){
-	const addressName = req.query.addressName;
+	const addressName = req.query.address;
 	const kakaoLocationOption = convertUtil.convertKakaoLocationOption(addressName);
 	connectApi(kakaoLocationOption).then(function(placeResult){
 		//맵핑되는 주소를 못 찾을 때, 예를 들면 도로명.
 		if(placeResult.address_result.meta.total_count==0){
 			//empty
+			placeResult.address_result = {};
 			placeResult.address_status_code = 204;
 			placeResult.house_rent_status_code = 204;
+			placeResult.house_result = [{}];
 			res.json(placeResult);
 		}else{
 			const addressInfos = placeResult.address_result.documents[0].address;
@@ -26,7 +28,7 @@ router.get('/search/infos', function(req,res){
 			const compltedBCode = convertUtil.convertAddressToPNU(bCode,mainAddressNo,subAddressNo);
 			const houseRentPriceOption = convertUtil.convertHouseRentPriceOption(compltedBCode);
 			getHouseInfos(houseRentPriceOption,placeResult).then(function(houseInfos){
-				console.log(houseInfos);
+				console.log(houseInfos)
 				res.json(houseInfos);
 			})
 		}
@@ -77,7 +79,6 @@ function getHouseInfos(houseRentPriceOption,notCompletedParam){
 			house_result:{},
 			house_rent_status_code:200
 		}
-
 		var options = [houseRentPriceOption];
 		async.map(options, function(obj, callback) {
 			// iterator function
@@ -98,33 +99,43 @@ function getHouseInfos(houseRentPriceOption,notCompletedParam){
 				notCompletedParam.house_rent_status_code = results[0].status_code;
 				notCompletedParam.house_result = results[0];
 			}
-			resultParam.house_result = notCompletedParam.house_result.houseRentPriceInfo.row;
-			resultParam.house_rent_status_code = notCompletedParam.house_rent_status_code;
-			const address_result = notCompletedParam.address_result.documents[0];
-			resultParam.address_result['road_address_name']=address_result.road_address.address_name;
-			resultParam.address_result['building_name']=address_result.road_address.building_name;
-			resultParam.address_result['address_name']=address_result.address_name;
-			resultParam.address_result['y']=address_result.address.y;
-			resultParam.address_result['x']=address_result.address.x;
-			resultParam.house_result.forEach(houseInfo=>{
-				delete houseInfo.ORG_CD;
-				delete houseInfo.SN;
-				delete houseInfo.SGG_CD;
-				delete houseInfo.SGG_NM;
-				delete houseInfo.BJDONG_CD;
-				delete houseInfo.BJDONG_NM;
-				delete houseInfo.BOBN;
-				delete houseInfo.BUBN;
-				delete houseInfo.HOUSE_GBN;
-				delete houseInfo.HOUSE_GBN_NAME;
-				delete houseInfo.BEGIN_DE;
-				delete houseInfo.END_DE;
-				delete houseInfo.DCSN_DE;
-				delete houseInfo.CNTRCT_GBN_NM;
-				delete houseInfo.RENT_IRDS_GTN;
-				delete houseInfo.RENT_IRDS_FEE;
-				delete houseInfo.REGIST_DT;
-			});
+			//검색한 곳에 거래내역이 없을 경우.
+			if(notCompletedParam.house_result.hasOwnProperty('RESULT'))
+			{
+				resultParam.house_rent_status_code = 204
+				resultParam.house_result=[{}];
+			}
+			else{
+				resultParam.house_result = notCompletedParam.house_result.houseRentPriceInfo.row;
+				resultParam.house_rent_status_code = notCompletedParam.house_rent_status_code;
+				const address_result = notCompletedParam.address_result.documents[0];
+				console.log(address_result.road_address)
+				resultParam.address_result['road_address_name']=address_result.road_address.address_name;
+				resultParam.address_result['building_name']=address_result.road_address.building_name;
+				resultParam.address_result['address_name']=address_result.address_name;
+				resultParam.address_result['y']=address_result.address.y;
+				resultParam.address_result['x']=address_result.address.x;
+				resultParam.house_result.forEach(houseInfo=>{
+					delete houseInfo.ORG_CD;
+					delete houseInfo.SN;
+					delete houseInfo.SGG_CD;
+					delete houseInfo.SGG_NM;
+					delete houseInfo.BJDONG_CD;
+					delete houseInfo.BJDONG_NM;
+					delete houseInfo.BOBN;
+					delete houseInfo.BUBN;
+					delete houseInfo.HOUSE_GBN;
+					delete houseInfo.HOUSE_GBN_NAME;
+					delete houseInfo.BEGIN_DE;
+					delete houseInfo.END_DE;
+					delete houseInfo.DCSN_DE;
+					delete houseInfo.CNTRCT_GBN_NM;
+					delete houseInfo.RENT_IRDS_GTN;
+					delete houseInfo.RENT_IRDS_FEE;
+					delete houseInfo.REGIST_DT;
+				});
+			}
+			
 			
 			resolve(resultParam);
 		});
