@@ -1,0 +1,10 @@
+{
+	"service_keys":{
+		"kakao_place" : "c5a56fdbec0600fae036465498ce5597",
+		"kakao_location" : "c5a56fdbec0600fae036465498ce5597",
+		"google_search_place" : "AIzaSyAScPMFgPh6SOjsZVPw4IJQoZt3SNkIGSY",
+		"seoul_house" :	"6e524a6c5663686134396763694562",
+		"naver_id":"4kcs41hrmb",
+		"naver_secret": "rSmXkHHM7DoXophlZs93GFrg8zbhSb8jhCVbRbkH"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"api_uri":{
+		"google_nearbysearch":"https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+		"google_textsearch":"https://maps.googleapis.com/maps/api/place/textsearch/json",
+		"google_streetview":"https://maps.googleapis.com/maps/api/streetview",
+		"kakao_search_category":"https://dapi.kakao.com/v2/local/search/category.json",
+		"kakao_search_address":"https://dapi.kakao.com/v2/local/search/address.json",
+		"house_rent_info":"http://openapi.seoul.go.kr:8088/%s/json/houseRentPriceInfo/1/100/%s",
+		"naver_geo_address":"https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode"
+	}
+}

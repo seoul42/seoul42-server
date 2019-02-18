@@ -1,4 +1,3 @@
-const functions = require('firebase-functions');
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,6 +20,7 @@ app.use(bodyParser.json());
 
 app.use('/house',houseRoute);
 app.use('/place',placeRoute);
+
 app.use(cors({ origin: true }));
 
 const port = process.env.PORT || 3000;
@@ -34,13 +34,12 @@ swaggerTools.initializeMiddleware(swaggerDoc,function(middleware){
   	// Validate Swagger requests
 	app.use(middleware.swaggerValidator());
   	app.use(middleware.swaggerUi());
+  	app.use('/', function(req,res){
+ 	res.sendFile('./index.html', {root: __dirname })
+})
 });
 
 app.listen(port, function(req,res){
 	console.log("listen... port:"+port);
 	console.log('Swagger-ui is available on http://localhost:%d/docs', port);
 })
-
-
-
-exports.apps = functions.https.onRequest(app)

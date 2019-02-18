@@ -79,6 +79,21 @@ function convertKakaoLocationOption(addressName){
 	return kakaoLocationOption;
 }
 
+function convertKakaoAddressOption(addressName){
+	var kakaoLocationOption = {
+		headers: {
+			'Authorization':  'KakaoAK '+serviceKeys.kakao_location
+		},
+		uri: serviceApis.kakao_search_my_address,
+		method: 'GET',
+		qs:{
+			query:addressName
+		}
+	}
+
+	return kakaoLocationOption;
+}
+
 function convertHouseRentPriceOption(bCode){
 	var houseRentPriceOption = {
 		uri: util.format(serviceApis.house_rent_info,serviceKeys.seoul_house,bCode),
@@ -86,6 +101,22 @@ function convertHouseRentPriceOption(bCode){
 	}
 
 	return houseRentPriceOption;
+}
+
+function convertSelectionHouse(notCompltedAddress){
+	var naverSelectionOption = {
+		headers: {
+			'X-NCP-APIGW-API-KEY-ID':serviceKeys.naver_id ,
+			'X-NCP-APIGW-API-KEY':serviceKeys.naver_secret
+		},
+		uri: serviceApis.naver_geo_address,
+		method: 'GET',
+		qs:{
+			query:notCompltedAddress
+		}
+	}
+
+	return naverSelectionOption;
 }
 
 function convertAddressToPNU(notCompltedBCode,mainAddressNo,subAddressNo){
@@ -108,7 +139,8 @@ function pad(n, width) {
 	return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 }
 
-
+exports.convertSelectionHouse = convertSelectionHouse;
+exports.convertKakaoAddressOption = convertKakaoAddressOption;
 exports.convertHouseRentPriceOption = convertHouseRentPriceOption;
 exports.convertKakaoLocationOption = convertKakaoLocationOption;
 exports.convertGoogleDetailOption = convertGoogleDetailOption;
