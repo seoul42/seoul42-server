@@ -21,6 +21,7 @@ booscamp3_C팀의 서울살이 서버 repository입니다. Android프로젝트�
 
 ![image](https://user-images.githubusercontent.com/22374750/52996284-77079080-3460-11e9-8f9c-44a15c6b0c9d.png)
 해당 서버는 `카카오 지역 api`, `서울 전월세 api`를 총합적으로 관리하고 있습니다.
+
 https://seoul42-api-seoul.azurewebsites.net/(https://seoul42-api-seoul.azurewebsites.net/)에 호스팅 했습니다.
 Place와 House 정보를 얻어오기 위해서 router 또한 Place와 House로 구분지었습니다.
 Place는 상권의 정보를 획득한 데이터를 Json으로 전송해주며, House는 매물 정보를 얻어와 Json으로 전송합니다.
