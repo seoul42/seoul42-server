@@ -26,6 +26,9 @@ Place와 House 정보를 얻어오기 위해서 router 또한 Place와 House로 
 Place는 상권의 정보를 획득한 데이터를 Json으로 전송해주며, House는 매물 정보를 얻어와 Json으로 전송합니다.
 
 <hr/>
+
+![image](https://user-images.githubusercontent.com/22374750/52177071-3f151200-27ff-11e9-8b58-ebc916b21c75.png)
+
 ![image](https://user-images.githubusercontent.com/22374750/51818141-0eba0900-2311-11e9-9b90-52542547986a.png)
 
 Place의 정보는 위경도, 반경, 카테고리를 받아서 해당 파라매터에 맞는 결과값을 얻어오게 됩니다.
@@ -33,7 +36,6 @@ House의 정보는 위경도를 받고, 해당 위경도의 행정코드의 10�
 행정코드 10자리를 획득한 후, 서버에서 별도의 9자리 로직(1, 본번(4자리), 부번(4자리))를 합쳐줘 완성된 행정번호를 만들어줍니다.
 또한 이 행정번호를 다시, 서울시 공공데이터 API에 호출한 후에 검색 결과를 정제해서 데이터를 출력해줍니다.
 
-=======
-![image](https://user-images.githubusercontent.com/22374750/52177071-3f151200-27ff-11e9-8b58-ebc916b21c75.png)
+
 
 <hr/>
