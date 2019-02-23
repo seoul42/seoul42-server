@@ -20,7 +20,17 @@ app.use(bodyParser.json());
 
 app.use('/house',houseRoute);
 app.use('/place',placeRoute);
+app.use('/policy',function(req,res){
+	res.sendFile('./policy.html', {root: __dirname})
+})
 
+app.use(express.static('scss'));
+app.use(express.static('css'));
+app.use(express.static('vendor'));
+app.use(express.static('js'));
+app.use(express.static('img'));
+app.use(express.static('fonts'));
+app.use(express.static('public'));
 app.use(cors({ origin: true }));
 
 const port = process.env.PORT || 3000;
@@ -35,8 +45,9 @@ swaggerTools.initializeMiddleware(swaggerDoc,function(middleware){
 	app.use(middleware.swaggerValidator());
   	app.use(middleware.swaggerUi());
   	app.use('/', function(req,res){
- 	res.sendFile('./index.html', {root: __dirname })
-})
+ 		res.sendFile('./public/index.html', {root: __dirname })
+	})
+
 });
 
 app.listen(port, function(req,res){
