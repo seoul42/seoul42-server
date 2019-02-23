@@ -3306,10 +3306,10 @@ h6 {
 ============================================================================================ */
 .main_btn {
   padding: 0px 45px;
-  background-image: -webkit-gradient(linear, left top, right top, from(#bc2bff), color-stop(51%, #7249fb), to(#bc2bff));
-  background-image: -webkit-linear-gradient(left, #bc2bff 0%, #7249fb 51%, #bc2bff 100%);
-  background-image: -o-linear-gradient(left, #bc2bff 0%, #7249fb 51%, #bc2bff 100%);
-  background-image: linear-gradient(to right, #bc2bff 0%, #7249fb 51%, #bc2bff 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#9cd3fa), color-stop(51%, #81c7f8), to(#45adf6));
+  background-image: -webkit-linear-gradient(left, #9cd3fa 0%, #81c7f8 51%, #45adf6 100%);
+  background-image: -o-linear-gradient(left, #9cd3fa 0%, #81c7f8 51%, #45adf6 100%);
+  background-image: linear-gradient(to right, #9cd3fa 0%, #81c7f8 51%, #45adf6 100%);
   background-size: 200% auto;
   z-index: 2;
   display: inline-block;
@@ -3323,8 +3323,8 @@ h6 {
   font-family: "Open Sans", sans-serif;
   line-height: 50px;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 10px 30px 0px rgba(115, 73, 251, 0.3);
-  box-shadow: 0px 10px 30px 0px rgba(115, 73, 251, 0.3);
+  -webkit-box-shadow: 0px 10px 30px 0px rgba(122, 199, 248, 0.3);
+  box-shadow: 0px 10px 30px 0px rgba(122, 199, 248, 0.3);
 }
 
 .main_btn:hover {
@@ -3547,9 +3547,9 @@ h6 {
 /* Download App Area css
 ============================================================================================ */
 .download_app_area {
-  background-image: -moz-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
-  background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
-  background-image: -ms-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
+  background-image: -moz-linear-gradient(0deg, #9cd3fa 0%, #45adf6 100%);
+  background-image: -webkit-linear-gradient(0deg, #9cd3fa 0%, #45adf6 100%);
+  background-image: -ms-linear-gradient(0deg, #9cd3fa 0%, #45adf6 100%);
 }
 
 .app_inner {
@@ -3590,10 +3590,10 @@ h6 {
 }
 
 .app_btn_area .app_btn:hover .media .d-flex i {
-  background: -webkit-linear-gradient(left, #bb2bff, #7349fb);
-  background: -webkit-gradient(linear, left top, right top, from(#bb2bff), to(#7349fb));
-  background: -o-linear-gradient(left, #bb2bff, #7349fb);
-  background: linear-gradient(left, #bb2bff, #7349fb);
+  background: -webkit-linear-gradient(left, #9cd3fa, #45adf6);
+  background: -webkit-gradient(linear, left top, right top, from(#9cd3fa), to(#45adf6));
+  background: -o-linear-gradient(left, #9cd3fa, #45adf6);
+  background: linear-gradient(left, #9cd3fa, #45adf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
