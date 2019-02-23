@@ -308,9 +308,9 @@ button:focus {
   top: -70px;
   left: 0;
   right: 0;
-  background-image: -moz-linear-gradient(0deg, #9cd3fa 0%, #45adf6 100%);
-  background-image: -webkit-linear-gradient(0deg, #9cd3fa 0%, #45adf6 100%);
-  background-image: -ms-linear-gradient(0deg, #9cd3fa 0%, #45adf6 100%);
+  background-image: -moz-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
+  background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
+  background-image: -ms-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
   -webkit-transform: translateY(70px);
   -ms-transform: translateY(70px);
   transform: translateY(70px);
